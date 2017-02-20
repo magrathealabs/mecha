@@ -1,5 +1,10 @@
 # Tripod
 
+[![Build Status](https://travis-ci.org/magrathealabs/tripod.svg?branch=master)](https://travis-ci.org/magrathealabs/tripod)
+[![Dependency Status](https://gemnasium.com/badges/github.com/magrathealabs/tripod.svg)](https://gemnasium.com/github.com/magrathealabs/tripod)
+[![Code Climate](https://codeclimate.com/github/magrathealabs/tripod/badges/gpa.svg)](https://codeclimate.com/github/magrathealabs/tripod)
+[![Test Coverage](https://codeclimate.com/github/magrathealabs/tripod/badges/coverage.svg)](https://codeclimate.com/github/magrathealabs/tripod/coverage)
+
 Tripod generates Rails apps with the defaults used in Magrathea Labs projects.
 
 ## Installation
