@@ -18,7 +18,7 @@ gem install tripod
 ## Usage
 
 ```bash
-tripod new <projectname>
+tripod <projectname>
 ```
 
 This will create a Rails app with name `<projectname>` and add all our defaults.
