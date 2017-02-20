@@ -1,0 +1,69 @@
+# <%= app_name.humanize %>
+
+- [Dependencies](#dependencies)
+- [Setup](#setup)
+- [Development](#development)
+- [Staging](#staging)
+- [Style](#style)
+
+## Dependencies
+
+- Ruby 2.3.3
+- PostgreSQL 9.6.1
+- PhantomJS 1.8.1
+
+```sh
+brew update
+brew install postgres phantomjs
+```
+
+## Setup
+
+```sh
+bundle install
+cp config/database.yml.example config/database.yml
+bin/rails db:setup
+```
+
+## Development
+
+Run the local server at http://localhost:3000 with:
+
+```sh
+bin/rails s
+```
+
+Check code style with:
+
+```sh
+rubocop
+```
+
+Run tests with:
+
+```sh
+bin/rails t
+```
+
+Use guard to run tests and check code style as you code:
+
+```sh
+guard
+```
+
+You can check test coverage information by running the test suite and looking into `coverage/` folder:
+
+```sh
+bin/rails test
+open coverage/index.html
+```
+
+## Staging
+
+TODO:
+
+## Style
+
+- [Ruby style guide](https://github.com/bbatsov/ruby-style-guide)
+- [Rails style guide](https://github.com/bbatsov/rails-style-guide)
+- [JavaScript style guide](https://github.com/airbnb/javascript)

@@ -1,0 +1,16 @@
+AllCops:
+  Exclude:
+    - 'tmp/**/*'
+    - 'Guardfile'
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Style/AccessorMethodName:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
