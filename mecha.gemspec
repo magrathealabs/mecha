@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = Mecha::RUBY_VERSION
 
   spec.add_dependency 'rails', Mecha::RAILS_VERSION
+  spec.add_dependency 'slop'
 
   spec.add_development_dependency 'bundler', '~> 1.14'
   spec.add_development_dependency 'rake', '~> 12.0'

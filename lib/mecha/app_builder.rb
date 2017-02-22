@@ -18,6 +18,24 @@ module Mecha
       end
     end
 
+    def config_devise
+      return if Mecha.opts.skip_devise?
+      say('Installing devise from generator', :yellow)
+      system('rails generate devise:install')
+      inject_into_file(
+        'config/environments/development.rb',
+        "\n\n  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }",
+        before: "\nend"
+      )
+      system('rails generate devise User')
+      system('rails generate devise:views')
+      inject_into_file(
+        'app/controllers/application_controller.rb',
+        "\n  before_action :authenticate_user!",
+        before: "\nend"
+      )
+    end
+
     def config_test
       copy_file('test_helper.rb', 'test/test_helper.rb', force: true)
       empty_directory_with_keep_file('test/factories')
@@ -54,6 +72,7 @@ module Mecha
       guardfile
       rubocop
       config_application
+      config_devise
       config_test
     end
 
