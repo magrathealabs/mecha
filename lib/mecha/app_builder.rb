@@ -1,4 +1,4 @@
-module Tripod
+module Mecha
   class AppBuilder < Rails::AppBuilder
     def config_application
       inject_into_class('config/application.rb', 'Application') do

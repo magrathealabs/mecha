@@ -2,7 +2,7 @@
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
-require 'tripod'
+require 'mecha'
 
-Tripod.config_templates_path
-Tripod::AppGenerator.start
+Mecha.config_templates_path
+Mecha::AppGenerator.start
