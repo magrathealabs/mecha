@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'tripod'
   spec.version       = Tripod::VERSION
   spec.authors       = ['Magrathea Labs']
-  spec.email         = ['support@magrathealabs.com']
+  spec.email         = ['contact@magrathealabs.com']
 
   spec.summary       = 'Generate a Rails app using MLabs defaults.'
   spec.description   = 'Tripod is used by MLabs to bootstrap working apps with our defaults.'
