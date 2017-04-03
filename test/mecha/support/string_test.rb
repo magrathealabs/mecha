@@ -1,19 +1,19 @@
 require 'test_helper'
 
 class StringTest < Minitest::Test
-  test 'from camelcase' do
+  def test_convert_from_camelcase
     assert_equal 'snake_case', 'SnakeCase'.underscore
   end
 
-  test 'from camelcase containing a dash' do
+  def test_convert_from_camelcase_containing_dash
     assert_equal 'snake_case', 'Snake-Case'.underscore
   end
 
-  test 'from camelcase containing spaces' do
+  def test_convert_from_camelcase_containing_spaces
     assert_equal 'snake_case', 'Snake  Case'.underscore
   end
 
-  test 'from camelcase containing underscores' do
+  def test_convert_from_camelcase_containing_underscores
     assert_equal 'snake_case', 'Snake__Case'.underscore
   end
 end

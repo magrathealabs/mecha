@@ -6,7 +6,8 @@ class String
   #
   # @return [String] the object converted to underscore format.
   def underscore
-    tr('-', '_')
+    gsub(/([a-z\d])([A-Z])/, '\1_\2')
+      .tr('-', '_')
       .gsub(/\s/, '_')
       .gsub(/__+/, '_')
       .downcase
