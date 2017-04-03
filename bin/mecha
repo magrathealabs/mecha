@@ -7,6 +7,7 @@ require 'mecha'
 
 Mecha.opts = Slop.parse do |o|
   o.bool '-d', '--devise', 'install and config Devise'
+  o.bool '-bp', '--bitbucket-pipelines', 'config Bitbucket Pipelines'
   o.on '--version', 'print the gem version' do
     puts Mecha::VERSION
     exit
