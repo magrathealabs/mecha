@@ -68,11 +68,16 @@ module Mecha
       copy_file('rubocop.yml', '.rubocop.yml')
     end
 
+    def config_simplecov
+      copy_file('simplecov', '.simplecov')
+    end
+
     def leftovers
       guardfile
       rubocop
       config_application
       config_devise
+      config_simplecov
       config_test
     end
 
