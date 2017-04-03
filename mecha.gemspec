@@ -1,4 +1,5 @@
 # coding: utf-8
+
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'mecha/version'
@@ -20,8 +21,8 @@ Gem::Specification.new do |spec|
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = 'exe'
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.bindir        = 'bin'
+  spec.executables   = ['mecha']
   spec.require_paths = ['lib']
 
   spec.required_ruby_version = Mecha::RUBY_VERSION
@@ -29,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rails', Mecha::RAILS_VERSION
   spec.add_dependency 'slop'
 
-  spec.add_development_dependency 'bundler', '~> 1.14'
-  spec.add_development_dependency 'rake', '~> 12.0'
-  spec.add_development_dependency 'minitest', '~> 5.0'
+  spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'minitest'
 end
