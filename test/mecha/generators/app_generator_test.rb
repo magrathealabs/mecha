@@ -20,8 +20,8 @@ module Mecha
         assert_file 'config/database.yml', /database: tmp_development/
         assert_file 'config/database.yml', /database: tmp_production/
 
-        assert_file 'config/application.rb', /      config.autoload_paths/
-        assert_file 'config/application.rb', /      config.generators do |g|/
+        assert_file 'config/application.rb', /    config.autoload_paths/
+        assert_file 'config/application.rb', /    config.generators do |g|/
       end
     end
   end

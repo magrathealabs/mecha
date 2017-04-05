@@ -19,8 +19,8 @@ module Mecha
       end
 
       def config_application
-        inject_into_class('config/application.rb', 'Application') { config_autoload_paths }
-        inject_into_class('config/application.rb', 'Application') { config_generators }
+        application(config_autoload_paths)
+        application(config_generators)
         create_file('app/services/.keep')
         create_file('app/uploaders/.keep')
       end
@@ -32,9 +32,7 @@ module Mecha
       private
 
       def config_autoload_paths
-        <<-DOC
-      config.autoload_paths += %W(\#{config.root}/lib \#{config.root}/app/uploaders \#{config.root}/services)
-        DOC
+        "config.autoload_paths += %W(\#{config.root}/lib \#{config.root}/app/uploaders \#{config.root}/services)"
       end
 
       def config_generators

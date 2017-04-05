@@ -26,38 +26,49 @@ class BaseGeneratorTest < Rails::Generators::TestCase
     create_gemfile
     create_environment('development')
     create_application_controller
+    create_dir('config/locales/devise')
+    create_file('config/locales/devise.views.en.yml')
+    create_file('config/locales/devise.views.pt-BR.yml')
   end
 
   def create_environment(env)
     create_dir('config/environments')
-    out_file = File.new("#{destination_root}/config/environments/#{env}.rb", 'w')
+    out_file = new_file("config/environments/#{env}.rb")
     out_file.puts("Rails.application.configure do\nend")
     out_file.close
   end
 
   def create_gemfile
-    out_file = File.new("#{destination_root}/Gemfile", 'w')
+    out_file = new_file('Gemfile')
     out_file.puts("source 'https://rubygems.org'\n")
     out_file.close
   end
 
   def create_application_css
     create_dir('app/assets/stylesheets')
-    File.new("#{destination_root}/app/assets/stylesheets/application.css", 'w').close
+    create_file('app/assets/stylesheets/application.css')
   end
 
   def create_application_controller
     create_dir('app/controllers')
-    out_file = File.new("#{destination_root}/app/controllers/application_controller.rb", 'w')
+    out_file = new_file('app/controllers/application_controller.rb')
     out_file.puts("class ApplicationController < ActionController::Base\nend")
     out_file.close
   end
 
   def create_application_rb
     create_dir('config')
-    out_file = File.new("#{destination_root}/config/application.rb", 'w')
+    out_file = new_file('/config/application.rb')
     out_file.puts("module App\n  class Application < Rails::Application\n  end\nend")
     out_file.close
+  end
+
+  def create_file(filepath)
+    new_file(filepath).close
+  end
+
+  def new_file(filepath)
+    File.new("#{destination_root}/#{filepath}", 'w')
   end
 
   def create_dir(path)

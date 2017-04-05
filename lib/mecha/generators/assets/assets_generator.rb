@@ -11,15 +11,13 @@ module Mecha
       end
 
       def config_application
-        inject_into_class('config/application.rb', 'Application') { config_assets_precompile }
+        application(config_assets_precompile)
       end
 
       private
 
       def config_assets_precompile
-        <<-DOC
-      config.assets.initialize_on_precompile = false
-        DOC
+        'config.assets.initialize_on_precompile = false'
       end
     end
   end

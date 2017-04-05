@@ -27,8 +27,8 @@ module Mecha
         generate('devise:i18n:locale pt-BR')
 
         empty_directory('config/locales/devise')
-        # move_file('config/locales/devise.views.en.yml', 'config/locales/devise/views.en.yml')
-        # move_file('config/locales/devise.views.pt-BR.yml', 'config/locales/devise/views.pt-BR.yml')
+        move_file('config/locales/devise.views.en.yml', 'config/locales/devise/views.en.yml')
+        move_file('config/locales/devise.views.pt-BR.yml', 'config/locales/devise/views.pt-BR.yml')
         remove_file('config/locales/devise.en.yml')
       end
 
