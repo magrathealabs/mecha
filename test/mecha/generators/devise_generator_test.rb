@@ -8,7 +8,10 @@ module Mecha
 
       test 'generate Devise files' do
         create_devise_app_files
-        run_generator([destination_root])
+
+        Mecha::Generators::DeviseGenerator.stub_any_instance(:stop_spring, true) do
+          run_generator([destination_root])
+        end
 
         assert_file "#{destination_root}/Gemfile", /gem 'devise', '~> 4.2'/
         assert_file "#{destination_root}/config/environments/development.rb",
