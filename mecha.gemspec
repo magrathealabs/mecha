@@ -33,4 +33,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'minitest'
+  spec.add_development_dependency 'minitest-reporters'
+  spec.add_development_dependency 'guard', '>=2.1.0'
+  spec.add_development_dependency 'guard-minitest'
+  spec.add_development_dependency 'pry', '>= 0.9.12'
 end

@@ -1,23 +1,37 @@
+require 'slop'
+
 require 'mecha/version'
-require 'mecha/generators/app_generator'
-require 'mecha/app_builder'
-require 'mecha/support/string'
+require 'mecha/generators/app/app_generator'
+require 'mecha/generators/assets/assets_generator'
+require 'mecha/generators/guard/guard_generator'
+require 'mecha/generators/rubocop/rubocop_generator'
+require 'mecha/generators/simplecov/simplecov_generator'
+require 'mecha/generators/bitbucket_pipelines/bitbucket_pipelines_generator'
+require 'mecha/generators/devise/devise_generator'
 
 module Mecha
-  @opts = nil
-
-  def self.opts=(opts)
-    @opts = opts
-  end
-
   def self.opts
-    @opts
+    Slop.parse do |o|
+      o.bool '--devise', 'install and config Devise'
+      o.bool '--bitbucket-pipelines', 'config Bitbucket Pipelines'
+      o.on '--version', 'print the gem version' do
+        puts Mecha::VERSION
+        exit
+      end
+      o.on '--help', 'list options' do
+        puts o
+        exit
+      end
+    end
   end
 
-  def self.config_templates_path
-    templates_path = File.expand_path(File.join('mecha', 'templates'), File.dirname(__FILE__))
-    Mecha::AppGenerator.source_root(templates_path)
-    Mecha::AppGenerator.source_paths << Rails::Generators::AppGenerator.source_root
-    Mecha::AppGenerator.source_paths << templates_path
+  def self.start
+    Mecha::Generators::AppGenerator.start
+    Mecha::Generators::AssetsGenerator.start
+    Mecha::Generators::GuardGenerator.start
+    Mecha::Generators::RubocopGenerator.start
+    Mecha::Generators::SimplecovGenerator.start
+    Mecha::Generators::BitbucketPipelinesGenerator.start if Mecha.opts.bitbucket_pipelines?
+    Mecha::Generators::DeviseGenerator.start if Mecha.opts.devise?
   end
 end

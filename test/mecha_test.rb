@@ -1,15 +1,15 @@
 require 'test_helper'
 
-class MechaTest < Minitest::Test
-  def test_that_it_has_a_version_number
+class MechaTest < ActiveSupport::TestCase
+  test 'that it has a version number' do
     refute_nil ::Mecha::VERSION
   end
 
-  def test_that_it_has_a_ruby_version_number
+  test 'that it has a ruby version number' do
     refute_nil ::Mecha::RUBY_VERSION
   end
 
-  def test_that_it_has_a_rails_version_number
+  test 'that it has a rails version number' do
     refute_nil ::Mecha::RAILS_VERSION
   end
 end
