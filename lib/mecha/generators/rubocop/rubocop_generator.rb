@@ -8,6 +8,12 @@ module Mecha
       def copy_rubocop
         copy_file('rubocop.yml', '.rubocop.yml')
       end
+
+      def add_development_gems
+        gem_group :development do
+          gem 'rubocop', require: false
+        end
+      end
     end
   end
 end

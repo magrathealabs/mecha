@@ -10,7 +10,7 @@ module Mecha
         run_generator([destination_root])
 
         assert_file 'README.md', /# Tmp/
-        assert_file 'Gemfile', /  gem 'capybara'/
+        assert_file 'Gemfile', /  gem 'pry'/
         assert_file '.gitignore', /.DS_Store/
 
         assert_file 'config/database.example.yml', /database: tmp_test/

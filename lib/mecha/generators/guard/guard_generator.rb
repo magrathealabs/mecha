@@ -8,6 +8,15 @@ module Mecha
       def copy_guardfile
         copy_file('Guardfile', 'Guardfile')
       end
+
+      def add_development_gems
+        gem_group :development do
+          gem 'guard'
+          gem 'guard-minitest'
+          gem 'guard-rails', require: false
+          gem 'guard-rubocop'
+        end
+      end
     end
   end
 end
