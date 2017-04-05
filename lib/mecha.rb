@@ -6,6 +6,7 @@ require 'mecha/generators/assets/assets_generator'
 require 'mecha/generators/guard/guard_generator'
 require 'mecha/generators/rubocop/rubocop_generator'
 require 'mecha/generators/simplecov/simplecov_generator'
+require 'mecha/generators/i18n/i18n_generator'
 require 'mecha/generators/bitbucket_pipelines/bitbucket_pipelines_generator'
 require 'mecha/generators/devise/devise_generator'
 
@@ -31,6 +32,7 @@ module Mecha
     Mecha::Generators::GuardGenerator.start
     Mecha::Generators::RubocopGenerator.start
     Mecha::Generators::SimplecovGenerator.start
+    Mecha::Generators::I18nGenerator.start
     Mecha::Generators::BitbucketPipelinesGenerator.start if Mecha.opts.bitbucket_pipelines?
     Mecha::Generators::DeviseGenerator.start if Mecha.opts.devise?
   end
