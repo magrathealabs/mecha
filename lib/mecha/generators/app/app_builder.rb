@@ -37,13 +37,13 @@ module Mecha
 
       def config_generators
         <<-DOC
-      config.generators do |g|
-        g.view_specs    false
-        g.routing_specs false
-        g.stylesheets   false
-        g.javascripts   false
-        g.helper        false
-      end
+config.generators do |g|
+      g.view_specs    false
+      g.routing_specs false
+      g.stylesheets   false
+      g.javascripts   false
+      g.helper        false
+    end
         DOC
       end
     end

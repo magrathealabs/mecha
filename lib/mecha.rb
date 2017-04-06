@@ -10,12 +10,14 @@ require 'mecha/generators/i18n/i18n_generator'
 require 'mecha/generators/tests/tests_generator'
 require 'mecha/generators/bitbucket_pipelines/bitbucket_pipelines_generator'
 require 'mecha/generators/devise/devise_generator'
+require 'mecha/generators/sentry/sentry_generator'
 
 module Mecha
   def self.opts
     Slop.parse do |o|
-      o.bool '--devise', 'install and config Devise'
       o.bool '--bitbucket-pipelines', 'config Bitbucket Pipelines'
+      o.bool '--devise', 'install and config Devise'
+      o.bool '--sentry', 'install and config Sentry'
       o.on '--version', 'print the gem version' do
         puts Mecha::VERSION
         exit
@@ -37,5 +39,6 @@ module Mecha
     Mecha::Generators::TestsGenerator.start
     Mecha::Generators::BitbucketPipelinesGenerator.start if Mecha.opts.bitbucket_pipelines?
     Mecha::Generators::DeviseGenerator.start if Mecha.opts.devise?
+    Mecha::Generators::SentryGenerator.start if Mecha.opts.sentry?
   end
 end

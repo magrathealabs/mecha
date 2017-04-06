@@ -58,8 +58,15 @@ class BaseGeneratorTest < Rails::Generators::TestCase
 
   def create_application_rb
     create_dir('config')
-    out_file = new_file('/config/application.rb')
+    out_file = new_file('config/application.rb')
     out_file.puts("module App\n  class Application < Rails::Application\n  end\nend")
+    out_file.close
+  end
+
+  def create_production_rb
+    create_dir('config/environments')
+    out_file = new_file('config/environments/production.rb')
+    out_file.puts("Rails.application.configure do\nend")
     out_file.close
   end
 
