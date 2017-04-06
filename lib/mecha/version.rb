@@ -1,5 +1,5 @@
 module Mecha
-  VERSION = '0.6.0'.freeze
+  VERSION = '0.6.1'.freeze
   RUBY_VERSION = '>= 2.4'.freeze
   RAILS_VERSION = '~> 5.0.0'.freeze
 end

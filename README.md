@@ -19,10 +19,25 @@ gem install mecha
 ## Usage
 
 ```bash
-mecha <projectname>
+mecha <projectname> --devise --bitbucket-pipelines --sentry
 ```
 
-This will create a Rails app with name `<projectname>` and add all our defaults.
+This will create a Rails app with name `<projectname>` and add all our defaults. It configures the app to use sass, remove Turbolinks and CoffeeScript, configure Guard, Rubocop and Simplecov. Also, installs Factory Girl, Faker, Timecop, Capybara, Poltergeist, Database Rewinder.
+
+### Available Generators
+
+**Devise**
+
+`--devise` installs Devise, generates `User`, i18n files and the internationalized views for English and Brazilian Portuguese.
+
+**Bitbucket Pipelines**
+
+`--bitbucket-pipelines` generates the `bitbucket-pipelines.yml` and a special database config for it.
+
+**Sentry**
+
+`--sentry` installs Sentry and adds configs to `application.rb` and `application_controller.rb`. Remember to create an environment
+variable with you DSN key. `ENV['DNS']`.
 
 ## Development
 
