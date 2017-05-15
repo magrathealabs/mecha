@@ -32,12 +32,21 @@ module Mecha
       private
 
       def config_autoload_paths
-        "config.autoload_paths += %W(\#{config.root}/lib \#{config.root}/app/uploaders \#{config.root}/services)"
+        <<-DOC
+    config.autoload_paths += [
+      Rails.root.join('app', 'constants'),
+      Rails.root.join('app', 'presenters'),
+      Rails.root.join('app', 'services'),
+      Rails.root.join('app', 'uploaders'),
+      Rails.root.join('app', 'validators'),
+      Rails.root.join('lib')
+    ]
+        DOC
       end
 
       def config_generators
         <<-DOC
-config.generators do |g|
+    config.generators do |g|
       g.view_specs    false
       g.routing_specs false
       g.stylesheets   false
