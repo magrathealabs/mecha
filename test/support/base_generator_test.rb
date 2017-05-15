@@ -31,6 +31,13 @@ class BaseGeneratorTest < Rails::Generators::TestCase
     create_file('config/locales/devise.views.pt-BR.yml')
   end
 
+  def create_test_dir
+    create_dir('test')
+    out_file = new_file('test/test_helper.rb')
+    out_file.puts("ENV['RAILS_ENV'] ||= 'test'\n")
+    out_file.close
+  end
+
   def create_environment(env)
     create_dir('config/environments')
     out_file = new_file("config/environments/#{env}.rb")

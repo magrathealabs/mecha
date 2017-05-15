@@ -18,6 +18,7 @@ module Mecha
       o.bool '--bitbucket-pipelines', 'config Bitbucket Pipelines'
       o.bool '--devise', 'install and config Devise'
       o.bool '--sentry', 'install and config Sentry'
+      o.bool '--simplecov', 'install and config Simplecov'
       o.on '--version', 'print the gem version' do
         puts Mecha::VERSION
         exit
@@ -34,9 +35,9 @@ module Mecha
     Mecha::Generators::AssetsGenerator.start
     Mecha::Generators::GuardGenerator.start
     Mecha::Generators::RubocopGenerator.start
-    Mecha::Generators::SimplecovGenerator.start
     Mecha::Generators::I18nGenerator.start
     Mecha::Generators::TestsGenerator.start
+    Mecha::Generators::SimplecovGenerator.start if Mecha.opts.simplecov?
     Mecha::Generators::BitbucketPipelinesGenerator.start if Mecha.opts.bitbucket_pipelines?
     Mecha::Generators::DeviseGenerator.start if Mecha.opts.devise?
     Mecha::Generators::SentryGenerator.start if Mecha.opts.sentry?

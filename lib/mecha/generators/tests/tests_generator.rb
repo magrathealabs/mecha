@@ -11,7 +11,6 @@ module Mecha
           gem 'database_rewinder'
           gem 'poltergeist'
           gem 'ruby-prof'
-          gem 'simplecov', require: false
           gem 'timecop'
           gem 'webmock'
         end

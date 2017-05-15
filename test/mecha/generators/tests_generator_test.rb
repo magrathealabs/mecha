@@ -12,7 +12,6 @@ module Mecha
 
         assert_file 'Gemfile', /  gem 'capybara'/
         assert_file 'Gemfile', /  gem 'faker'/
-        assert_file 'test/test_helper.rb', /require 'simplecov'/
         assert_file 'test/test_helper.rb', /    include FactoryGirl::Syntax::Methods/
       end
     end

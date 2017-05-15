@@ -39,6 +39,10 @@ This will create a Rails app with name `<projectname>` and add all our defaults.
 `--sentry` installs Sentry and adds configs to `application.rb` and `application_controller.rb`. Remember to create an environment
 variable with you DSN key. `ENV['DNS']`.
 
+**Simplecov**
+
+`--simplecov` installs Simplecov and adds configs to `test/test_helper.rb`.
+
 ## Development
 
 Run `rake test` or simply just `rake` to run tests.
