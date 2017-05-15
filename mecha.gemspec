@@ -25,9 +25,9 @@ Gem::Specification.new do |spec|
   spec.executables   = ['mecha']
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = Mecha::RUBY_VERSION
+  spec.required_ruby_version = ">= #{Mecha::RUBY_VERSION}"
 
-  spec.add_dependency 'rails', Mecha::RAILS_VERSION
+  spec.add_dependency 'rails', "~> #{Mecha::RAILS_VERSION}"
   spec.add_dependency 'slop'
 
   spec.add_development_dependency 'bundler'
