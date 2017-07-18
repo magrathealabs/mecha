@@ -48,6 +48,22 @@ module Mecha
         )
       end
 
+      def config_routes
+        routes = <<-ROUTES.strip_heredoc
+          devise_for :users
+
+          authenticated :user do
+            root '/', as: :authenticated_root
+          end
+
+          devise_scope :user do
+            root 'devise/sessions#new'
+          end
+        ROUTES
+
+        inject_into_file('config/routes.rb', routes, after: "Rails.application.routes.draw do\n")
+      end
+
       private
 
       def stop_spring
