@@ -2,7 +2,7 @@ require 'rails/generators'
 
 module Mecha
   module Generators
-    class TestsGenerator < Rails::Generators::Base
+    class TestsGenerator < Rails::Generators::AppBase
       source_root File.join(File.dirname(__FILE__), 'templates')
 
       def add_test_gems
@@ -24,8 +24,18 @@ module Mecha
       end
 
       def test_files
-        directory('test/support', 'test/support')
+        empty_directory_with_keep_file('test/support')
         copy_file('test/test_helper.rb', 'test/test_helper.rb', force: true)
+      end
+
+      def say_warking
+        message = <<-MESSAGE.strip_heredoc
+
+          Please install PhantomJS `brew install phantomjs`.
+
+        MESSAGE
+
+        say message
       end
     end
   end
