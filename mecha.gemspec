@@ -28,13 +28,10 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= #{Mecha::RUBY_VERSION}"
 
   spec.add_dependency 'rails', "~> #{Mecha::RAILS_VERSION}"
-  spec.add_dependency 'slop'
+  spec.add_dependency 'slop', '>= 4.5.0'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'minitest'
   spec.add_development_dependency 'minitest-reporters'
-  spec.add_development_dependency 'guard', '>=2.1.0'
-  spec.add_development_dependency 'guard-minitest'
-  spec.add_development_dependency 'pry', '>= 0.9.12'
 end

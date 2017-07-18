@@ -12,15 +12,19 @@ require 'mecha/generators/bitbucket_pipelines/bitbucket_pipelines_generator'
 require 'mecha/generators/devise/devise_generator'
 require 'mecha/generators/sentry/sentry_generator'
 require 'mecha/generators/cpf_cnpj/cpf_cnpj_generator'
+require 'mecha/generators/danger/danger_generator'
+require 'mecha/generators/pronto/pronto_generator'
 
 module Mecha
   def self.opts
     Slop.parse do |o|
       o.bool '--bitbucket-pipelines', 'config Bitbucket Pipelines'
+      o.bool '--cpf_cnpj', 'install and config CPF/CNPJ'
+      o.bool '--danger', 'install and config Danger'
       o.bool '--devise', 'install and config Devise'
+      o.bool '--pronto', 'install and config Pronto'
       o.bool '--sentry', 'install and config Sentry'
       o.bool '--simplecov', 'install and config Simplecov'
-      o.bool '--cpf_cnpj', 'install and config CPF/CNPJ'
       o.on '--version', 'print the gem version' do
         puts Mecha::VERSION
         exit
@@ -33,6 +37,9 @@ module Mecha
   end
 
   def self.start
+    arguments = []
+    arguments << '--simplecov' if Mecha.opts.simplecov?
+
     Mecha::Generators::AppGenerator.start
     Mecha::Generators::AssetsGenerator.start
     Mecha::Generators::GuardGenerator.start
@@ -44,5 +51,7 @@ module Mecha
     Mecha::Generators::DeviseGenerator.start if Mecha.opts.devise?
     Mecha::Generators::SentryGenerator.start if Mecha.opts.sentry?
     Mecha::Generators::CpfCnpjGenerator.start if Mecha.opts.cpf_cnpj?
+    Mecha::Generators::DangerGenerator.start(arguments) if Mecha.opts.danger?
+    Mecha::Generators::ProntoGenerator.start(arguments) if Mecha.opts.pronto?
   end
 end
