@@ -1,3 +1,4 @@
-**/spec/**/*_spec.rb
-**/spec/**/*_preview.rb
-**/db/migrations/*.rb
+**/db/**/*.rb
+**/test/**/*.rb
+**/spec/**/*.rb
+**/app/admin/**/*.rb

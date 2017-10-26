@@ -6,7 +6,6 @@ module Mecha
   module Generators
     class AppGenerator < Rails::Generators::AppGenerator
       class_option :database, type: :string, default: 'postgresql'
-      class_option :skip_action_cable, type: :boolean, default: true
       class_option :skip_coffee, type: :boolean, default: true
       class_option :skip_turbolinks, type: :boolean, default: true
 

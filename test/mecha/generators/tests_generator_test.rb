@@ -10,9 +10,8 @@ module Mecha
         create_gemfile
         run_generator
 
-        assert_file 'Gemfile', /  gem 'capybara'/
         assert_file 'Gemfile', /  gem 'faker'/
-        assert_file 'test/test_helper.rb', /    include FactoryGirl::Syntax::Methods/
+        assert_file 'test/test_helper.rb', /    include FactoryBot::Syntax::Methods/
       end
     end
   end

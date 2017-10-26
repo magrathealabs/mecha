@@ -7,18 +7,17 @@ module Mecha
 
       def add_test_gems
         gem_group :test do
-          gem 'capybara'
           gem 'database_rewinder'
-          gem 'poltergeist'
           gem 'ruby-prof'
           gem 'timecop'
+          gem 'vcr'
           gem 'webmock'
         end
       end
 
       def add_development_test_gems
         gem_group :development, :test do
-          gem 'factory_girl_rails'
+          gem 'factory_bot_rails'
           gem 'faker'
         end
       end
@@ -31,7 +30,7 @@ module Mecha
       def say_warking
         message = <<-MESSAGE.strip_heredoc
 
-          Please install PhantomJS `brew install phantomjs`.
+          Please install Chrome driver `brew install chromedriver`.
 
         MESSAGE
 

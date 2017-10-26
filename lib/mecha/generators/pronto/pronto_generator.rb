@@ -17,6 +17,13 @@ module Mecha
 
       def add_pronto_gems
         gem_group :development, :test do
+          gem 'brakeman', require: false
+          gem 'bullet', require: false
+          gem 'fasterer', require: false
+          gem 'flay', require: false
+          gem 'rails_best_practices', require: false
+          gem 'reek', require: false
+
           gem 'pronto'
           gem 'pronto-brakeman', require: false
           gem 'pronto-fasterer', require: false
@@ -27,6 +34,22 @@ module Mecha
           gem 'pronto-rubocop', require: false
           gem('pronto-simplecov', require: false) if options[:simplecov]
         end
+      end
+
+      def add_bullet_config
+        config = <<-CONFIG.strip_heredoc
+          config.after_initialize do
+            Bullet.enable = true
+            Bullet.alert = false
+            Bullet.bullet_logger = true
+            Bullet.console = true
+            Bullet.rails_logger = true
+            Bullet.add_footer = true
+          end
+        end
+        CONFIG
+
+        application(config, env: 'development')
       end
 
       def say_config_message

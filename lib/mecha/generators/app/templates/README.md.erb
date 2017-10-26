@@ -10,11 +10,21 @@
 
 - Ruby >= <%= Mecha::RUBY_VERSION %>
 - PostgreSQL 9.6.1
-- PhantomJS 1.8.1
+
+### MacOS
 
 ```sh
 brew update
-brew install postgres phantomjs
+brew install postgres
+gem install bundler
+```
+
+### Ubuntu
+
+```sh
+apt-get update
+apt-get postgresql postgresql-contrib postgresql-server-dev-all cmake
+gem install bundler
 ```
 
 ## Setup

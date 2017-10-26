@@ -11,10 +11,10 @@ module Mecha
 
       def add_development_gems
         gem_group :development do
-          gem 'guard'
-          gem 'guard-minitest'
+          gem 'guard', require: false
+          gem 'guard-minitest', require: false
           gem 'guard-rails', require: false
-          gem 'guard-rubocop'
+          gem 'guard-rubocop', require: false
         end
       end
     end

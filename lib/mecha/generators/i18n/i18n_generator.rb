@@ -15,10 +15,8 @@ module Mecha
         CONFIG.each { |config| application(config) }
       end
 
-      def create_defaults_locales
-        copy_file('config/locales/pt-BR.yml', 'config/locales/rails/pt-BR.yml')
-        copy_file('config/locales/en.yml', 'config/locales/rails/en.yml')
-        remove_file('config/locales/en.yml')
+      def add_i18n_gem
+        gem 'rails-i18n', '~> 5.0.4'
       end
 
       def create_models_locales

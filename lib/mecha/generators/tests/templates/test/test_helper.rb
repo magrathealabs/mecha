@@ -3,18 +3,25 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
-require 'capybara/poltergeist'
 require 'webmock/minitest'
 require 'support/page_object'
 
 Dir[Rails.root.join('test', 'support', '**', '*.rb')].each { |f| require f }
 
-Capybara.javascript_driver = :poltergeist
+VCR.configure do |config|
+  config.cassette_library_dir = 'test/fixtures/vcr_cassettes'
+  config.hook_into :webmock
+  config.ignore_localhost = true
+  config.before_record do |i|
+    i.response.body.force_encoding('UTF-8')
+  end
+end
+
 WebMock.disable_net_connect!(allow_localhost: true)
 
 module ActiveSupport
   class TestCase
-    include FactoryGirl::Syntax::Methods
+    include FactoryBot::Syntax::Methods
 
     self.use_transactional_tests = false
 
@@ -24,19 +31,6 @@ module ActiveSupport
 
     teardown do
       DatabaseRewinder.clean
-    end
-  end
-end
-
-module ActionDispatch
-  class IntegrationTest
-    include Devise::Test::IntegrationHelpers
-    include Capybara::DSL
-    include CapybaraExtras
-
-    teardown do
-      Capybara.reset_sessions!
-      Capybara.use_default_driver
     end
   end
 end

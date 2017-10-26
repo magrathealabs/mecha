@@ -11,10 +11,6 @@ module Mecha
         run_generator
 
         assert_file 'config/application.rb', /config\.i18n\.available_locales = \[\'pt-BR\', \'en\'\]/
-        assert_file 'config/locales/rails/en.yml'
-        assert_file 'config/locales/rails/pt-BR.yml'
-        assert_file 'config/locales/models/en.yml'
-        assert_file 'config/locales/models/pt-BR.yml'
         assert_no_file 'config/locales/en.yml'
       end
     end
