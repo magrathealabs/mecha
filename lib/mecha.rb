@@ -18,6 +18,7 @@ require 'mecha/generators/pronto/pronto_generator'
 module Mecha
   def self.opts
     Slop.parse do |o|
+      o.bool '--webpack', 'pass the webpack option for rails'
       o.bool '--bitbucket-pipelines', 'config Bitbucket Pipelines'
       o.bool '--cpf_cnpj', 'install and config CPF/CNPJ'
       o.bool '--danger', 'install and config Danger'
