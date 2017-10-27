@@ -42,6 +42,10 @@ This will create a Rails app with name `<projectname>` and add all our defaults.
 
 `--pronto` installs and add config for [Pronto](https://github.com/prontolabs/pronto). If SimpleCov is installed `pronto-simplecov` gem is also installed.
 
+**RSpec**
+
+`--rspec` installs RSpec and adds configs for tests.
+
 **Sentry**
 
 `--sentry` installs Sentry and adds configs to `application.rb` and `application_controller.rb`. Remember to create an environment

@@ -23,6 +23,7 @@ module Mecha
       o.bool '--danger', 'install and config Danger'
       o.bool '--devise', 'install and config Devise'
       o.bool '--pronto', 'install and config Pronto'
+      o.bool '--rspec', 'install and config RSpec'
       o.bool '--sentry', 'install and config Sentry'
       o.bool '--simplecov', 'install and config Simplecov'
       o.on '--version', 'print the gem version' do
@@ -38,14 +39,16 @@ module Mecha
 
   def self.start
     arguments = []
+    arguments << ARGV.first
     arguments << '--simplecov' if Mecha.opts.simplecov?
+    arguments << '--rspec' if Mecha.opts.rspec?
 
     Mecha::Generators::AppGenerator.start
     Mecha::Generators::AssetsGenerator.start
     Mecha::Generators::GuardGenerator.start
     Mecha::Generators::RubocopGenerator.start
     Mecha::Generators::I18nGenerator.start
-    Mecha::Generators::TestsGenerator.start
+    Mecha::Generators::TestsGenerator.start(arguments)
     Mecha::Generators::SimplecovGenerator.start if Mecha.opts.simplecov?
     Mecha::Generators::BitbucketPipelinesGenerator.start if Mecha.opts.bitbucket_pipelines?
     Mecha::Generators::DeviseGenerator.start if Mecha.opts.devise?
