@@ -14,6 +14,7 @@ require 'mecha/generators/sentry/sentry_generator'
 require 'mecha/generators/cpf_cnpj/cpf_cnpj_generator'
 require 'mecha/generators/danger/danger_generator'
 require 'mecha/generators/pronto/pronto_generator'
+require 'mecha/generators/circleci/circleci_generator'
 require 'mecha/generators/github/github_generator'
 
 module Mecha
@@ -21,6 +22,7 @@ module Mecha
     Slop.parse do |o|
       o.bool '--webpack', 'pass the webpack option for rails'
       o.bool '--bitbucket-pipelines', 'config Bitbucket Pipelines'
+      o.bool '--circleci', 'config CircleCI'
       o.bool '--cpf_cnpj', 'install and config CPF/CNPJ'
       o.bool '--danger', 'install and config Danger'
       o.bool '--devise', 'install and config Devise'
@@ -44,6 +46,8 @@ module Mecha
     arguments << ARGV.first
     arguments << '--simplecov' if Mecha.opts.simplecov?
     arguments << '--rspec' if Mecha.opts.rspec?
+    arguments << '--pronto' if Mecha.opts.pronto?
+    arguments << '--danger' if Mecha.opts.danger?
 
     Mecha::Generators::AppGenerator.start
     Mecha::Generators::AssetsGenerator.start
@@ -59,5 +63,6 @@ module Mecha
     Mecha::Generators::CpfCnpjGenerator.start if Mecha.opts.cpf_cnpj?
     Mecha::Generators::DangerGenerator.start(arguments) if Mecha.opts.danger?
     Mecha::Generators::ProntoGenerator.start(arguments) if Mecha.opts.pronto?
+    Mecha::Generators::CircleciGenerator.start(arguments) if Mecha.opts.circleci?
   end
 end
