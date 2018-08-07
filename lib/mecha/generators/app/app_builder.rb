@@ -9,8 +9,17 @@ module Mecha
         template('Gemfile.erb', 'Gemfile')
       end
 
+      def ruby_version
+        template('ruby-version.erb', '.ruby-version')
+      end
+
       def gitignore
         template('gitignore.erb', '.gitignore')
+      end
+
+      def procfile
+        template('procfile.erb', 'Procfile')
+        template('config/puma.rb.erb', 'config/puma.rb')
       end
 
       def database_yml
